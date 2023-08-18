@@ -5,7 +5,7 @@
 - Removed the check on the path for presence of specific folder name.
 - Exit the process (with result `0`) once the job is done.
 
-## Generate binary
+## How to build and run
 
 ```sh
 # generate binary
