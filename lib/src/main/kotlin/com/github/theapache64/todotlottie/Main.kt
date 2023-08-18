@@ -6,19 +6,16 @@ import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 import java.net.URL
+import kotlin.system.exitProcess
 
-const val VERSION = "1.0.2" // TODO: Collect it from package.json
-fun main(args: Array<String>) = runBlocking {
+const val VERSION = "1.0.3" // TODO: Collect it from package.json
+fun main(args: Array<String>):Unit = runBlocking {
     val projectDir = File(System.getProperty("user.dir"))
     println("➡️ Initializing... (v${VERSION})")
+    println("Traversing ${projectDir}")
     projectDir.walk()
         .forEach { jsonFile ->
-            val isAndroidRawFile = !jsonFile.path.contains("/build/") &&
-                    jsonFile.path.contains("/raw-?[a-zA-z\\-]*/".toRegex()) &&
-                    jsonFile.extension == "json"
-            if (
-                isAndroidRawFile // TODO || iOSLottieFile || webLottieFile
-            ) {
+            if (jsonFile.extension == "json") {
                 try {
                     val json = JSONObject(jsonFile.readText())
                     val isLottieJson = json.has("v")
@@ -36,6 +33,7 @@ fun main(args: Array<String>) = runBlocking {
         }
 
     println("✅ Done")
+    exitProcess(0)
 }
 
 suspend fun convertToDotLottie(

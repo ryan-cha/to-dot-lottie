@@ -2,13 +2,15 @@ import org.jetbrains.kotlin.com.intellij.openapi.vfs.StandardFileSystems.jar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    // `java-library`
+    application
     kotlin("jvm") version "1.7.10"
     kotlin("plugin.serialization") version "1.7.10"
-
 }
 
 group = "com.github.theapache64"
-version = "1.0.2"
+version = "1.0.3"
+
 
 repositories {
     mavenCentral()
@@ -32,6 +34,10 @@ dependencies {
 	// is a reference implementation. There is a large number of JSON packagesin Java.
 	// Perhaps someday the Java community will standardize on one. Untilthen, choose carefully.
     implementation("org.json:json:20220924")
+}
+
+application {
+    mainClass.set("com.github.theapache64.todotlottie.MainKt")
 }
 
 tasks.test {
