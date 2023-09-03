@@ -10,8 +10,10 @@ import kotlin.system.exitProcess
 
 const val VERSION = "1.0.3" // TODO: Collect it from package.json
 fun main(args: Array<String>):Unit = runBlocking {
+    val optionDelete = args.isNotEmpty() && args[0] == "-d"
     val projectDir = File(System.getProperty("user.dir"))
-    println("➡️ Initializing... (v${VERSION})")
+
+    println("➡️ Initializing... (v${VERSION}) option: Delete after conversion=[${optionDelete}]")
     println("Traversing ${projectDir}")
     projectDir.walk()
         .forEach { jsonFile ->
@@ -21,7 +23,11 @@ fun main(args: Array<String>):Unit = runBlocking {
                     val isLottieJson = json.has("v")
                     if (isLottieJson) {
                         convertToDotLottie(jsonFile)
-                        jsonFile.delete()
+
+                        // Delete the source file after conversion
+                        if (optionDelete) {
+                            jsonFile.delete()
+                        }
                         println("------------------------------")
                     } else {
                         println("⚠️ Not a lottie JSON. Skipping ${jsonFile.absolutePath}")

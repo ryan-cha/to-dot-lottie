@@ -25,6 +25,12 @@ Traversing ~/.../lib/build/distributions/lib
 # 1. Add the path to the binary to env
 # 2. Go to any folder containing the Lottie json files
 # 3. Run it!
+$ ryan-to-dot-lottie -d # Deletes the source file after conversion
+
+# or
+
+$ ryan-to-dot-lottie    # Keeps the source file after conversion
+
 ```
 
 ## 📝 License
