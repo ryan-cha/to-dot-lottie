@@ -8,7 +8,7 @@ import java.io.FileOutputStream
 import java.net.URL
 import kotlin.system.exitProcess
 
-const val VERSION = "1.0.3" // TODO: Collect it from package.json
+const val VERSION = "1.0.4" // TODO: Collect it from package.json
 fun main(args: Array<String>):Unit = runBlocking {
     val optionDelete = args.isNotEmpty() && args[0] == "-d"
     val projectDir = File(System.getProperty("user.dir"))

@@ -18,7 +18,7 @@ $ unzip -d . lib.zip
 # run the binary
 $ ./bin/lib
 
-➡️ Initializing... (v1.0.3)
+➡️ Initializing... (v1.0.4)
 Traversing ~/.../lib/build/distributions/lib
 ✅ Done
 
