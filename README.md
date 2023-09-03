@@ -4,6 +4,7 @@
 
 - Removed the check on the path for presence of specific folder name.
 - Exit the process (with result `0`) once the job is done.
+- Added option to keep or delete the source file after conversion.
 
 ## How to build and run
 
